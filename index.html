@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片拼接工具</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel editor" aria-label="图片编辑区">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">上传图片</p>
+            <h1>图片拼接工具</h1>
+          </div>
+          <label class="upload-button">
+            <input id="fileInput" type="file" accept="image/*" multiple />
+            选择图片
+          </label>
+        </div>
+
+        <div id="dropzone" class="dropzone">
+          <div>
+            <strong>拖入图片或点击选择</strong>
+            <span>支持 JPG、PNG、WEBP，多张图片会按上传顺序拼接</span>
+          </div>
+        </div>
+
+        <div id="thumbGrid" class="thumb-grid" aria-live="polite"></div>
+
+        <div class="controls">
+          <label>
+            <span>布局</span>
+            <select id="columns">
+              <option value="2">两列</option>
+              <option value="3" selected>三列</option>
+              <option value="4">四列</option>
+            </select>
+          </label>
+          <label>
+            <span>间距</span>
+            <input id="gap" type="range" min="0" max="24" value="8" />
+          </label>
+          <label>
+            <span>圆角</span>
+            <input id="radius" type="range" min="0" max="24" value="4" />
+          </label>
+          <label>
+            <span>背景</span>
+            <input id="background" type="color" value="#ffffff" />
+          </label>
+        </div>
+      </section>
+
+      <section class="panel preview" aria-label="预览与下载区">
+        <div class="preview-header">
+          <div>
+            <p class="eyebrow">预览效果</p>
+            <h2>生成后的拼接图</h2>
+          </div>
+          <button id="download" class="download-button" disabled>下载图片</button>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="canvas" width="900" height="900"></canvas>
+          <p id="emptyState">上传图片后在这里预览拼接效果</p>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
